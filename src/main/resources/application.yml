@@ -1,0 +1,59 @@
+#공통
+server:
+  port: 9090
+
+spring:
+  profiles:
+    active: local
+
+  thymeleaf:
+    encoding: UTF-8
+    prefix: classpath:templates/
+    suffix: .html
+    mode: HTML
+    cache: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springboot_study
+    username: springboot_study
+    password: springboot_study
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:/mapper/**/*.xml
+
+---
+# local(로컬)
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+---
+# dev(개발)
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  devtools:
+    restart:
+      enabled: false
+
+---
+# prod(운영)
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  devtools:
+    restart:
+      enabled: false
