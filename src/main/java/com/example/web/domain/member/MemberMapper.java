@@ -11,9 +11,12 @@ public interface MemberMapper {
 
     public Optional<Member> findMemberById(String id);
 
+    public Optional<Member> findMemberByEmail(String email);
+
     public int updateMember(Member member);
 
     public int deleteMember(String id);
 
     public Optional<List<Member>> findAllMember();
+
 }

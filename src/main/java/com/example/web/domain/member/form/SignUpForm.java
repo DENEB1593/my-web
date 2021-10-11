@@ -22,7 +22,7 @@ public class SignUpForm {
     @NotEmpty
     private String password;
 
-    @Email @NotEmpty
+    @Email @NotBlank
     private String email;
 
     @NotEmpty
@@ -31,7 +31,7 @@ public class SignUpForm {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthday;
 
-    @NotEmpty
+    @NotNull
     private Gender gender;
 
     @NotEmpty

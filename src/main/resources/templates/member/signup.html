@@ -33,27 +33,39 @@
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
                     <form action="#"
-                          th:action="@{/member/api/signup}" th:object="${signUpForm}" method="POST">
+                          th:action="@{/member/signup}" th:object="${signUpForm}" method="POST">
                         <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">ID</label>
+                                    <input class="input--style-4" type="text" th:field="*{id}" name="id">
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</small>
+                                </div>
+                            </div>
+
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Name</label>
                                     <input class="input--style-4" type="text" th:field="*{name}" name="name">
                                 </div>
                             </div>
-                            <div class="col-2">
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col">
                                 <div class="input-group">
-                                    <label class="label">ID</label>
-                                    <input class="input--style-4" type="text" th:field="*{id}" name="id">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="password" th:field="*{password}" name="password">
                                 </div>
                             </div>
                         </div>
+
                         <div class="row row-space" th:with="Gender=${T(com.example.web.domain.member.enums.Gender)}">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" th:field="*{birthday}" name="birthday">
+                                        <input class="input--style-4 js-datepicker" data-date-format='yyyy-mm-dd' type="text" th:field="*{birthday}" name="birthday" id="birthday">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
@@ -79,6 +91,7 @@
                                 <div class="input-group">
                                     <label class="label">Email</label>
                                     <input class="input--style-4" type="email" th:field="*{email}" name="email">
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
                                 </div>
                             </div>
                             <div class="col-2">
